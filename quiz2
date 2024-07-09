@@ -1,0 +1,29 @@
+section .data
+    a dd 5
+    b dd 10
+    c dd 7 
+    d dd 3
+    result dd 0
+
+section .text
+    global _start
+
+_start:
+    mov eax, [a]
+    mov ebx, [b]
+
+    imul ebx
+    mov edx, eax
+
+    mov eax, [c]
+    mov ebx, [d]
+
+    imul ebx
+    add edx, eax
+
+
+    mov [result], edx
+
+    mov eax, 60  ; syscall: exit
+    xor edi, edi ; status: 0
+    syscall
